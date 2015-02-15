@@ -1,0 +1,11 @@
+.beat-indicator {
+    width: 1em;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5em;
+    border: 1px solid gray;
+    border-radius: 0.5em;
+    &.on {
+        background-color: red;
+    }
+}
