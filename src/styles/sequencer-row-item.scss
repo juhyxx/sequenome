@@ -1,0 +1,21 @@
+.sequencer-row-item {
+	$baseColor: red;
+
+	height: 50px;
+	width:50px;
+	display: inline-block;
+	border: 2px solid gray;
+	color:gray;
+	font-size: 25px;
+	text-align: center;
+	border-radius: 4px;
+	font-weight: bold;
+
+	&.active {
+		background-color: $baseColor;
+		box-shadow: 0 0 5px lighten($baseColor, 20%), 0 0 10px $baseColor;
+		border-color: darken(red, 10%);
+		text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
+		color: darken(red, 25%);
+	}
+}

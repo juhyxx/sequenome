@@ -11,6 +11,5 @@ export default class Sequencer extends View {
 	addTrack() {
 		this.rows.add(new SequencerRow(this.parentElement, this.model));
 	}
-
 	
 }

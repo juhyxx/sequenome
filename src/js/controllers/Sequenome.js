@@ -53,7 +53,6 @@ export default class Sequenome extends Application {
 			document.querySelector('#sequencer'), this.beatModel
 		);
 		sequencer.addTrack();
-		sequencer.addTrack();
-		sequencer.render();
+ 		sequencer.render();
 	}
 }

@@ -13,8 +13,8 @@ export default class SequencerRow extends View {
 		el.appendChild(this.element);
 
 		this.stepCount = this.model.items.length;
-		this.model.items.forEach(function() {
-			this.items.push(new SequencerRowItem(this.element));
+		this.model.items.forEach(function(item, index) {
+			this.items.push(new SequencerRowItem(this.element, index + 1));
 		}, this);
 	}
 
@@ -32,10 +32,9 @@ export default class SequencerRow extends View {
 				case 'beatCount':
 					var diff = item.oldValue - item.object.beatCount;
 
-					console.log(diff);
 					if (diff < 0) { //add
-						for (let i = 0; i < Math.abs(diff); i++) {
-							this.items.push(new SequencerRowItem(this.element));
+						for (let i = item.oldValue; i < item.object.beatCount; i++) {
+							this.items.push(new SequencerRowItem(this.element, i + 1));
 						}
 					} else if (diff > 0) { //remove
 						this.items.splice(item.oldValue - 1, diff).forEach(function(item) {
