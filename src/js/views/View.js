@@ -7,16 +7,17 @@ export default class View {
 	}
 
 	render() {
-		console.log("my render");
+		
 	}
 
 	setModel(model) {
-		this.model = model;
-		Object.observe(this.model, this.modelChanged.bind(this));
+		if (model) {
+			this.model = model;
+			Object.observe(this.model, this.modelChanged.bind(this));
+		}
 	}
 
 	modelChanged(changes) {
 
 	}
 }
-

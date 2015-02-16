@@ -4,12 +4,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Sequenome</title>
+	<script src="es6-shim.js"></script>
 	<script src="src/js/main.js"></script>
 	<link rel="stylesheet" href="style.css">
 	<link rel="import" href="templates.html">
 </head>
 <body>
-	<input type="number" min="10" max="300" id="tempo" value="120">
-	<div id="sequencer">sequencer</div>
+	<main>
+		<input type="number" min="10" max="300" id="tempo" value="120">
+		<input type="number" min="2" max="100" id="beat-count" value="4">
+		<div id="sequencer"></div>
+		<button id="tap">Tap</button>
+	</main>
 </body>
 </html>

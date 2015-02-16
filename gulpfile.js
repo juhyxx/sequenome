@@ -8,7 +8,7 @@
  	es6transpiler = require('gulp-es6-transpiler'),
  	moduleTranspiler = require('gulp-es6-module-transpiler'),
  	gutil = require('gulp-util'),
- 	sass = require('gulp-sass');;
+ 	sass = require('gulp-sass');
 
  gulp.task('javascript', function() {
  	return gulp.src(['src/js/*.js', 'src/js/**/*.js'])
@@ -17,6 +17,7 @@
  		.pipe(es6transpiler()).on('error', gutil.log)
  		//.pipe(concat('script.js'))
  		.pipe(sourcemaps.write('.'))
+ 		.pipe(addsrc('node_modules/es6-shim/es6-shim.js'))
  		.pipe(gulp.dest('.tmp'));
  });
 
@@ -83,5 +84,5 @@
  function swallowError(error) {
  	console.log(error.toString());
 
- 	this.emit('end');
+ 	//this.emit('end');
  }

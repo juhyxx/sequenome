@@ -1,4 +1,5 @@
 import View from 'src/js/views/View.js';
+import SequencerRow from 'src/js/views/SequencerRow.js';
 
 export default class Sequencer extends View {
 
@@ -7,9 +8,9 @@ export default class Sequencer extends View {
 		super(parentElement, model);
 	}
 
-	render() {
-		this.rows.forEach(function(row) {
-			row.render(this.parentElement);
-		}, this);
+	addTrack() {
+		this.rows.add(new SequencerRow(this.parentElement, this.model));
 	}
+
+	
 }

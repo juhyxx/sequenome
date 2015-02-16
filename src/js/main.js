@@ -1,5 +1,5 @@
-import Application from 'src/js/controllers/Application.js';
+import Sequenome from 'src/js/controllers/Sequenome.js';
 
 window.onload = function() {
-	new Application().run();
+	new Sequenome().run();
 };
