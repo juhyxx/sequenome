@@ -1,22 +1,56 @@
 @import "variables";
 
-
 .sequencer-row-item {
-	height: 50px;
-	width:50px;
-	display: inline-block;
-	border: 2px solid gray;
-	color:gray;
-	font-size: 25px;
-	text-align: center;
-	border-radius: 4px;
-	font-weight: bold;
+    display: inline-block;
+    color: gray;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 10px;
+    &.active {
+        .level {
+            box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
+            border-color: darken($displayBaseColor, 10%);
+            text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
+            color: darken($displayBaseColor, 5%);
 
-	&.active {
-		background-color: $displayBaseColor;
-		box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
-		border-color: darken($displayBaseColor, 10%);
-		text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
-		color: darken($displayBaseColor, 5%);
-	}
+             &:after {
+             	box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
+             	background-color: $displayBaseColor;
+             }
+        }
+        .number {
+        	color: $displayBaseColor;
+        	 text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
+        }
+    }
+    .level {
+        border: 2px solid gray;
+        height: 50px;
+        width: 50px;
+        position: relative;
+        &:after {
+            position: absolute;
+            content: '';
+            background-color: gray;
+            bottom: 0;
+            left: 0;
+            height: 50px;
+            width: 50px;
+            transition: height 1s;
+        }
+        &.off {
+            &:after {
+                height: 0;
+            }
+        }
+        &.half {
+            &:after {
+                height: 25px;
+            }
+        }
+        &.on {}
+    }
 }

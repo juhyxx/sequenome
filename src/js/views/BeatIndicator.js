@@ -18,6 +18,7 @@ export default class BeatIndicator extends TemplateView {
 
 	updateView() {
 		let element = this.element;
+		
 		element.classList.toggle('on');
 		element.innerHTML = this.model.counter + 1;
 	}

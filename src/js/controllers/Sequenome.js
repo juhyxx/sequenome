@@ -1,7 +1,7 @@
 import Application from 'src/js/controllers/Application.js';
 import Timer from 'src/js/controllers/Timer.js';
 import Sequencer from 'src/js/views/Sequencer.js';
-import Sound from 'src/js/views/Sound.js';
+import Sounds from 'src/js/views/Sounds.js';
 import BeatIndicator from 'src/js/views/BeatIndicator.js';
 
 import {
@@ -19,8 +19,8 @@ export default class Sequenome extends Application {
 
 	onTick() {
 		this.beatModel.counter = this.beatModel.counter < this.beatCount - 1 ? this.beatModel.counter + 1 : 0;
-		this.beatModel.items = this.beatModel.items.map((item, index) => {
-			return index === this.beatModel.counter;
+		this.beatModel.items.forEach((item, index) => {
+			item.active = index === this.beatModel.counter;
 		}, this);
 	}
 
@@ -28,7 +28,14 @@ export default class Sequenome extends Application {
 		this.beatModel.beatCount = count;
 		this.beatModel.on = false;
 		this.beatModel.counter = 0;
-		this.beatModel.items = new Array(this.beatCount).fill(false);
+		this.beatModel.items = [];
+		for (let i = 0; i < this.beatCount; i++) {
+			this.beatModel.items.push({
+				active: false,
+				level: 0.5
+			});
+		}
+		this.beatModel.items[0].level = 1;
 	}
 
 	get beatCount() {
@@ -59,7 +66,7 @@ export default class Sequenome extends Application {
 
 		let beatIndicator = new BeatIndicator(q('.display'), this.beatModel),
 			sequencer = new Sequencer(q('#sequencer'), this.beatModel),
-			sound = new Sound(this.beatModel);
+			sound = new Sounds(this.beatModel);
 
 		sequencer.addTrack();
 		sequencer.render();

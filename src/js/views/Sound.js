@@ -1,14 +1,12 @@
 export default class Sound {
 
-	constructor(model) {
-		this.setModel(model);
-
-		let context = new window.AudioContext(),
-			oscillator = context.createOscillator(), // Create sound source
+	constructor(frequency, context) {
+		let
+			oscillator = context.createOscillator(),
 			gainNode = context.createGain();
 
 		oscillator.type = 'triangle';
-		oscillator.frequency.value = 4 * 440;
+		oscillator.frequency.value = frequency;
 		oscillator.start(0);
 
 		gainNode.gain.value = 0;
@@ -27,8 +25,9 @@ export default class Sound {
 		this.gainNode.gain.value = gain;
 	}
 
-	play() {
-		this.gain = 0.01;
+	play(level) {
+		this.gain = level || 1;
+
 		var now = new Date().getTime(),
 			interval = setInterval(() => {
 				if (new Date().getTime() >= now + 100) {
@@ -36,17 +35,6 @@ export default class Sound {
 					clearInterval(interval);
 				}
 			}, 1);
-
 	}
 
-	setModel(model) {
-		if (model) {
-			this.model = model;
-			Object.observe(this.model, this.modelChanged.bind(this));
-		}
-	}
-
-	modelChanged(changes) {
-		this.play();
-	}
 }
