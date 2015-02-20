@@ -1,6 +1,7 @@
-.sequencer-row-item {
-	$baseColor: red;
+@import "variables";
 
+
+.sequencer-row-item {
 	height: 50px;
 	width:50px;
 	display: inline-block;
@@ -12,10 +13,10 @@
 	font-weight: bold;
 
 	&.active {
-		background-color: $baseColor;
-		box-shadow: 0 0 5px lighten($baseColor, 20%), 0 0 10px $baseColor;
-		border-color: darken(red, 10%);
+		background-color: $displayBaseColor;
+		box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
+		border-color: darken($displayBaseColor, 10%);
 		text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
-		color: darken(red, 25%);
+		color: darken($displayBaseColor, 5%);
 	}
 }

@@ -1,0 +1,10 @@
+{
+    "@disable": false,
+    "args": [],
+    "camelcase": true,
+    "es5": true,
+    "esnext": true,
+    "excludes": [],
+    "laxcomma": false,
+    "vars": true
+}

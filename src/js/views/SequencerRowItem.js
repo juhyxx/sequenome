@@ -3,7 +3,7 @@ import TemplateView from 'src/js/views/TemplateView.js';
 export default class SequencerRowItem extends TemplateView {
 
 	constructor(parentElement, number) {
-		this.name = 'sequencer-row-item';
+		this._name = 'sequencer-row-item';
 		this.number = number;
 		super(parentElement, {});
 	}

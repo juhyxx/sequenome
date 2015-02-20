@@ -1,13 +1,25 @@
 import Application from 'src/js/controllers/Application.js';
 import Timer from 'src/js/controllers/Timer.js';
 import Sequencer from 'src/js/views/Sequencer.js';
+import Sound from 'src/js/views/Sound.js';
 import BeatIndicator from 'src/js/views/BeatIndicator.js';
+
+import {
+	q
+}
+from 'src/js/Utils.js';
 
 export default class Sequenome extends Application {
 
+	constructor() {
+		this.timer = new Timer(60, this.onTick.bind(this));
+		this.beatModel = {};
+		this.beatCount = 4;
+	}
+
 	onTick() {
 		this.beatModel.counter = this.beatModel.counter < this.beatCount - 1 ? this.beatModel.counter + 1 : 0;
-		this.beatModel.items = this.beatModel.items.map(function(item, index) {
+		this.beatModel.items = this.beatModel.items.map((item, index) => {
 			return index === this.beatModel.counter;
 		}, this);
 	}
@@ -23,36 +35,36 @@ export default class Sequenome extends Application {
 		return this.beatModel.beatCount;
 	}
 
-	run() {
-		this.beatModel = {};
-		this.beatCount = 4;
-
-		var timer = new Timer(120, this.onTick.bind(this));
-		timer.run();
-
-		document.querySelector('#beat-count').addEventListener('change', function() {
-			this.beatCount = parseInt(document.querySelector('#beat-count').value, 10);
-		}.bind(this));
-		document.querySelector('#tempo').addEventListener('change', function() {
-			timer.setTempo(parseInt(this.value, 10));
-		});
-
-		document.querySelector('#tap').addEventListener('click', function() {
+	registerHandlers() {
+		q('#beat-count').addEventListener('change', () =>
+			this.beatCount = parseInt(q('#beat-count').value, 10)
+		);
+		q('#tempo').addEventListener('change', () =>
+			this.timer.setTempo(parseInt(q('#tempo').value, 10))
+		);
+		q('#tap').addEventListener('click', () => {
 			if (this.previousTime) {
-				let interval = Date.now() - this.previousTime;
-				let tempo = Math.round(60000 / interval);
-				
-				document.querySelector('#tempo').value = tempo;
-				timer.setTempo(tempo);
+				let interval = Date.now() - this.previousTime,
+					tempo = Math.round(60000 / interval);
+
+				q('#tempo').value = tempo;
+				this.timer.setTempo(tempo);
 				this.previousTime = undefined;
 			}
 			this.previousTime = Date.now();
 		}, this);
-		var beatIndicator = new BeatIndicator(document.querySelector('main'), this.beatModel);
-		var sequencer = new Sequencer(
-			document.querySelector('#sequencer'), this.beatModel
-		);
+	}
+
+	run() {
+
+		let beatIndicator = new BeatIndicator(q('.display'), this.beatModel),
+			sequencer = new Sequencer(q('#sequencer'), this.beatModel),
+			sound = new Sound(this.beatModel);
+
 		sequencer.addTrack();
- 		sequencer.render();
+		sequencer.render();
+		this.registerHandlers();
+		this.timer.run();
+
 	}
 }

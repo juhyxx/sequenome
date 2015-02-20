@@ -3,7 +3,7 @@ import TemplateView from 'src/js/views/TemplateView.js';
 export default class BeatIndicator extends TemplateView {
 
 	constructor(parentElement, model) {
-		this.name = 'beat-indicator';
+		this._name = 'beat-indicator';
 		super(parentElement, model);
 		this.updateView();
 	}
@@ -17,7 +17,7 @@ export default class BeatIndicator extends TemplateView {
 	}
 
 	updateView() {
-		var element = this.getElement();
+		let element = this.element;
 		element.classList.toggle('on');
 		element.innerHTML = this.model.counter + 1;
 	}
