@@ -7,7 +7,7 @@ from 'src/js/Utils.js';
 export default class SequencerRowItem extends TemplateView {
 
 	constructor(parentElement, item, number) {
-		this._name = 'sequencer-row-item';
+		this.name = 'sequencer-row-item';
 		this.item = item;
 		this.number = number;
 		super(parentElement, {});

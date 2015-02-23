@@ -64,9 +64,9 @@ export default class Sequenome extends Application {
 
 	run() {
 
-		let beatIndicator = new BeatIndicator(q('.display'), this.beatModel),
-			sequencer = new Sequencer(q('#sequencer'), this.beatModel),
-			sound = new Sounds(this.beatModel);
+		let beatIndicator = new BeatIndicator(q('#beat-indicator'), this.beatModel),
+			sequencer = new Sequencer(q('#sequencer'), this.beatModel);
+			//sound = new Sounds(this.beatModel);
 
 		sequencer.addTrack();
 		sequencer.render();

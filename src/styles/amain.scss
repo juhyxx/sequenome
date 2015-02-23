@@ -1,15 +1,29 @@
 @import "variables";
 
-@import url(http://fonts.googleapis.com/css?family=Orbitron);
+
+@font-face {
+    font-family: 'lcd_phoneregular';
+    src: url('lcdphone-webfont.eot');
+    src: url('lcdphone-webfont.eot?#iefix') format('embedded-opentype'),
+         url('lcdphone-webfont.woff2') format('woff2'),
+         url('lcdphone-webfont.woff') format('woff'),
+         url('lcdphone-webfont.ttf') format('truetype'),
+         url('lcdphone-webfont.svg#lcd_phoneregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+} 
+
+//@import url(http://fonts.googleapis.com/css?family=Orbitron);
 
 body * {
-	font-family: 'Orbitron', sans-serif;
+	font-family: 'lcd_phoneregular', sans-serif;
 	font-size: 150%;
 }
 body {
 	background-color: $bgColor;
 	main {
-		width: 500px;
+		width: 700px;
 		margin: auto;
 	}
 }

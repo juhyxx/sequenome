@@ -10,6 +10,7 @@ export default class SequencerRow extends View {
 
 	render(el) {
 		this.element = document.createElement('div');
+		this.element.classList.add('row');
 		el.appendChild(this.element);
 
 		this.stepCount = this.model.items.length;

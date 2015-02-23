@@ -1,8 +1,8 @@
 @import "variables";
 
 .display {
-	background-color: lighten($bgColor, 10%);
-	padding: 1em;
+	background: url('../images/bg.svg');
+	padding: 0.5em;
 	margin: 1em;
 	border-radius: 0.25em;
 	box-shadow: 
@@ -10,4 +10,5 @@
 	0 0 8px rgba(black,0.5), 
 	1px 1px 16px rgba(white,0.2), 
 	inset 1px 1px 2px rgba(white,0.3);
+
 }

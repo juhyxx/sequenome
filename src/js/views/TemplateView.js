@@ -14,6 +14,10 @@ export default class TemplateView extends View {
         this._name = name;
     }
 
+    get name() {
+        return this._name;
+    }
+
     setupElement(fragment) {
 
     }

@@ -8,37 +8,43 @@
     border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 15px;
+    flex-grow:1;
+    padding: 5px;
+    opacity: 0.5;
     &.active {
+        opacity: 1;
         .level {
             box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
             border-color: darken($displayBaseColor, 10%);
             text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
             color: darken($displayBaseColor, 5%);
-
-             &:after {
-             	box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
-             	background-color: $displayBaseColor;
-             }
+            &:after {
+                box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
+                background-color: $displayBaseColor;
+            }
         }
         .number {
-        	color: $displayBaseColor;
-        	 text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
+            color: $displayBaseColor;
+            text-shadow: 1px 1px 5px rgba(white, 0.3), -1px -1px 5px rgba(white, 0.3);
         }
     }
     .level {
         border: 2px solid gray;
-        height: 50px;
-        width: 50px;
+        height: 8*$module;
+        
         position: relative;
+        margin: {
+        	bottom: 5px;
+        }
         &:after {
             position: absolute;
             content: '';
             background-color: gray;
             bottom: 0;
             left: 0;
-            height: 50px;
-            width: 50px;
+            height: 8*$module;
+            width: 100%;
             transition: height 1s;
         }
         &.off {
@@ -48,7 +54,7 @@
         }
         &.half {
             &:after {
-                height: 25px;
+                height: 4*$module;
             }
         }
         &.on {}

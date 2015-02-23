@@ -1,15 +1,11 @@
 @import "variables";
 
 .beat-indicator {
-    width: 1em;
+   
+    color: $displayBaseColor;
     text-align: center;
-    font-weight: bold;
-    padding: 0.5em;
-    border: 1px solid gray;
-    border-radius: 0.5em;
-    color: rgba(black, 0.5);
+    width: 50px;
+    height: 50px;
     &.on {
-        background-color: $displayBaseColor;
-        box-shadow: 0 0 5px lighten($displayBaseColor, 20%), 0 0 10px $displayBaseColor;
     }
 }
